@@ -13,7 +13,7 @@ async function main() {
   // Test the research team
   const streamResults = researchTeam.stream(
     {
-      messages: [new HumanMessage("What's the price of a big mac in Argentina?")],
+      messages: [new HumanMessage("Find me three interesting stories about SpaceX and then please fetch me short summaries of each.")],
     },
     { recursionLimit: 100 },
   );

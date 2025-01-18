@@ -68,7 +68,7 @@ async function runAgentNode(params: {
 }
 
 export async function setupResearchTeam(tools: Tools) {
-  const llm = new ChatOpenAI({ modelName: "gpt-4" });
+  const llm = new ChatOpenAI({ modelName: "gpt-4o" });
 
   // Create search node
   const searchNode = (state: typeof ResearchTeamState.State) => {

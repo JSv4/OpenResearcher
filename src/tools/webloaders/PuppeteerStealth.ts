@@ -57,7 +57,7 @@ export class PuppeteerStealthLoader
     try {
       const page = await browser.newPage();
       if (this.headers) {
-        await page.setExtraHTTPHeaders(this.headers);
+        await page.setExtraHTTPHeaders(this.headers as Record<string, string>);
       }
       
       await page.goto(this.webPath, { 
