@@ -23,8 +23,13 @@ export const ResearchTeamState = Annotation.Root({
   }),
   instructions: Annotation<string>({
     reducer: (x: string, y: string | null) => y ?? x,
-    default: () => "Solve the human's question.",
+    default: () => "Thoroughly research the current topic.",
   }),
+  topic: Annotation<string>({
+    reducer: (x: string, y: string | null) => y ?? x,
+    default: () => "",
+  }),
+
 });
 
 // Helper function to modify agent state
@@ -104,8 +109,8 @@ export async function setupResearchTeam(tools: Tools) {
   const supervisorAgent = await createTeamSupervisor(
     llm,
     "You are a supervisor tasked with managing a conversation between the" +
-    " following workers:  {team_members}. Given the following user request," +
-    " respond with the worker to act next. Each worker will perform a" +
+    " following workers:\n\n{team_members}.\n\nYour job is to thoroughly research {topic}." +
+    " Respond with the worker to act next. Each worker will perform a" +
     " task and respond with their results and status. When finished," +
     " respond with FINISH.\n\n" +
     " Select strategically to minimize the number of steps taken.",
